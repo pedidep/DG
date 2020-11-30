@@ -1,0 +1,2230 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     89520,       2222]
+NotebookOptionsPosition[     86212,       2162]
+NotebookOutlinePosition[     86606,       2178]
+CellTagsIndexPosition[     86563,       2175]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Cartan\[CloseCurlyQuote]s non-local coordinate", "Title",
+ CellChangeTimes->{{3.8154071877018747`*^9, 
+  3.815407208307078*^9}},ExpressionUUID->"3f1fff73-a963-44e9-b16a-\
+a12f43bfefec"],
+
+Cell["\<\
+This code calculate connection 1-form in nonlocal coordinate for any given \
+metric.\
+\>", "Item",
+ CellChangeTimes->{{3.8156969914592543`*^9, 
+  3.815697043503619*^9}},ExpressionUUID->"00b602eb-bbab-475a-bde6-\
+a678151fe3e6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.815697045898335*^9, 
+  3.815697054826563*^9}},ExpressionUUID->"a0cfe543-e9ff-4cc7-ad46-\
+24a46b0f15be"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox[
+           PaneBox[
+            TooltipBox[
+             ButtonBox[
+              PaneSelectorBox[{False->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIcon"]], True->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIconHot"]]}, Dynamic[
+                CurrentValue["MouseOver"]]],
+              Appearance->None,
+              BaseStyle->"Link",
+              ButtonData->"paclet:ref/Wedge",
+              ButtonNote->"paclet:ref/Wedge"],
+             "\"paclet:ref/Wedge\""],
+            FrameMargins->{{0, 4}, {0, 2}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Wedge\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"y\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"]\\\"}]\\) displays as \\!\\(\\*RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\"\[Wedge]\\\", StyleBox[\\\"y\\\", \\\"TI\\\"], \\\"\[Wedge]\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}]\\).\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False, False, False, False, 
+                False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Documentation\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Documentation\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Documentation", "Tooltip"]& ], 
+                   TemplateBox[{
+                    
+                    TemplateBox[{
+                    "\"Local \[RightGuillemet]\"", "paclet:ref/Wedge", 
+                    "paclet:ref/Wedge", "Link", {
+                    RGBColor[0.9686274509803922, 0.4666666666666667, 0.]}, 
+                    BaseStyle -> {
+                    RGBColor[0.0784313725490196, 0.1568627450980392, 0.6]}}, 
+                    "HyperlinkTemplate"], "\"  \"", 
+                    StyleBox[
+                    "\"|\"", "InformationRowLabel", StripOnInput -> False], 
+                    "\"  \"", 
+                    TemplateBox[{"\"Web \[RightGuillemet]\"", {
+                    URL[
+                    "http://reference.wolfram.com/language/ref/Wedge.html"], 
+                    None}, "http://reference.wolfram.com/language/ref/Wedge.\
+html", "Hyperlink", {
+                    RGBColor[0.9686274509803922, 0.4666666666666667, 0.]}, 
+                    BaseStyle -> {
+                    RGBColor[0.0784313725490196, 0.1568627450980392, 0.6]}}, 
+                    "HyperlinkTemplate"]},
+                    "RowDefault"]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"System`Wedge\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->6], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox[
+           PaneBox[
+            TooltipBox[
+             ButtonBox[
+              PaneSelectorBox[{False->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIcon"],
+                ImageSizeCache->{13., {4., 9.}}], True->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIconHot"],
+                ImageSizeCache->{13., {4., 9.}}]}, Dynamic[
+                CurrentValue["MouseOver"]]],
+              Appearance->None,
+              BaseStyle->"Link",
+              ButtonData->"paclet:ref/Wedge",
+              ButtonNote->"paclet:ref/Wedge"],
+             "\"paclet:ref/Wedge\""],
+            FrameMargins->{{0, 4}, {0, 2}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Wedge\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"y\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"]\\\"}]\\) displays as \\!\\(\\*RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\"\[Wedge]\\\", StyleBox[\\\"y\\\", \\\"TI\\\"], \\\"\[Wedge]\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}]\\).\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {2., 8.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {2., 8.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "\!\(\*RowBox[{\"Wedge\", \"[\", RowBox[{StyleBox[\"x\", \"TI\"], \",\", \
+StyleBox[\"y\", \"TI\"], \",\", StyleBox[\"\[Ellipsis]\", \"TR\"]}], \
+\"]\"}]\) displays as \!\(\*RowBox[{StyleBox[\"x\", \"TI\"], \"\[Wedge]\", \
+StyleBox[\"y\", \"TI\"], \"\[Wedge]\", StyleBox[\"\[Ellipsis]\", \
+\"TR\"]}]\).", "Documentation" -> 
+    Association[
+     "Local" -> "paclet:ref/Wedge", "Web" -> 
+      "http://reference.wolfram.com/language/ref/Wedge.html"], "OwnValues" -> 
+    None, "UpValues" -> None, "DownValues" -> None, "SubValues" -> None, 
+    "DefaultValues" -> None, "NValues" -> None, "FormatValues" -> None, 
+    "Options" -> None, "Attributes" -> {}, "FullName" -> "System`Wedge"], 
+   False]]], "Output",
+ CellChangeTimes->{3.8156970494111567`*^9},
+ CellLabel->"Out[32]=",ExpressionUUID->"c86c58dd-04e1-4d27-8acb-5e7ca59a5f72"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "Print", "}"}], ",", 
+    RowBox[{"<<", "xAct`xTras`"}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.678038241213669*^9, 3.678038246361495*^9}, 
+   3.7269764481534147`*^9, {3.8153452762154303`*^9, 3.81534527726001*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"5f0935a4-0ff4-42bd-811b-c6dc4cb2f64f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$DefInfoQ", "=", "False"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$PrePrint", "=", "ScreenDollarIndices"}], ";"}]}], "Input",
+ CellChangeTimes->{3.677239343597547*^9},
+ CellLabel->"In[2]:=",ExpressionUUID->"707b077c-bf22-4e27-bd3e-c0d9f0ffe132"],
+
+Cell[BoxData[{
+ RowBox[{"DefManifold", "[", 
+  RowBox[{"Man", ",", "3", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "\[Beta]", ",", "\[Alpha]", ",", "\[Chi]", ",", "\[Nu]", ",", "\[Mu]", 
+     ",", "\[Lambda]"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"DefChart", "[", 
+  RowBox[{"ch", ",", "Man", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "[", "]"}], ",", 
+     RowBox[{"y", "[", "]"}], ",", 
+     RowBox[{"z", "[", "]"}]}], "}"}], ",", 
+   RowBox[{"ChartColor", "\[Rule]", "Red"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"DefConstantSymbol", "[", "j", "]"}]}], "Input",
+ CellChangeTimes->{{3.677239353252493*^9, 3.677239353427828*^9}, {
+  3.678038274575873*^9, 3.678038274696683*^9}, {3.6836626947255383`*^9, 
+  3.683662694809449*^9}, {3.6836650834311934`*^9, 3.683665083650961*^9}, {
+  3.726976612961896*^9, 3.726976620161237*^9}, {3.7269801169486027`*^9, 
+  3.7269801210549183`*^9}, {3.7269817518313293`*^9, 3.7269817593971853`*^9}, {
+  3.727001056369823*^9, 3.727001060573571*^9}, {3.7270011922428217`*^9, 
+  3.727001195142591*^9}, {3.815345217938697*^9, 3.8153452216505747`*^9}, {
+  3.815351795732416*^9, 3.8153517974984694`*^9}, {3.815352551784114*^9, 
+  3.815352556614019*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"6e3c1bee-133c-40d9-bbce-5a5f84708097"],
+
+Cell[BoxData[{
+ RowBox[{"cd", ":=", 
+  RowBox[{"CovDOfMetric", "[", "met", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"met", ":=", 
+  RowBox[{"CTensor", "[", 
+   RowBox[{"matrix", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "ch"}], ",", 
+      RowBox[{"-", "ch"}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.8153452431221323`*^9, 3.8153452452050877`*^9}, 
+   3.815348361504284*^9},
+ CellLabel->"In[7]:=",ExpressionUUID->"e42a9cd8-fc2d-405a-8ef9-9a1a778b6137"],
+
+Cell[BoxData[
+ RowBox[{"ds2", ":=", 
+  RowBox[{
+   RowBox[{"dx", "^", "2"}], "+", 
+   RowBox[{"dy", "^", "2"}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"dz", "+", 
+      RowBox[{"j", " ", 
+       RowBox[{"x", "[", "]"}], " ", "dy"}]}], ")"}], "^", "2"}]}]}]], "Input",\
+
+ CellChangeTimes->{
+  3.81534537440094*^9, 3.815351811398624*^9, {3.815352563940755*^9, 
+   3.815352563986247*^9}, {3.815520895668366*^9, 3.815520928315213*^9}, {
+   3.8155210474606133`*^9, 3.8155210477362623`*^9}, 3.815696610071102*^9},
+ CellLabel->"In[9]:=",ExpressionUUID->"f04ec90d-b977-4b66-97f1-c1fcc8e51fca"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"matrix", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"CoefficientArrays", "[", 
+         RowBox[{"ds2", ",", 
+          RowBox[{"{", 
+           RowBox[{"dx", ",", "dy", ",", "dz"}], "}"}], ",", 
+          RowBox[{"\"\<Symmetric\>\"", "\[Rule]", "True"}]}], "]"}], "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "//", "Normal"}], "//", 
+      "Simplify"}]}], ";"}], ")"}], "//", "AbsoluteTiming"}]], "Input",
+ CellChangeTimes->{{3.815345290599341*^9, 3.815345292981551*^9}, {
+  3.815345365133679*^9, 3.8153453837303333`*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"963950ca-5d5f-480a-aa65-3fff8e7856bf"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.02072`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{{3.815345293306404*^9, 3.8153453228988323`*^9}, {
+   3.8153453608417187`*^9, 3.815345384080657*^9}, 3.815348364722576*^9, 
+   3.815351346665801*^9, 3.81535140906833*^9, 3.815351507906157*^9, 
+   3.815351813688415*^9, 3.815352177859956*^9, 3.815352572747789*^9, {
+   3.815353919073721*^9, 3.815353942473256*^9}, 3.815354517644618*^9, 
+   3.8153557301157637`*^9, 3.815515140859498*^9, 3.81551517596358*^9, {
+   3.815520971022176*^9, 3.815520982105523*^9}, 3.815521050193984*^9, 
+   3.8155212942727747`*^9, 3.815696631301024*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"02c86ac2-977b-4028-9ebc-4a29d3bb5239"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"SetCMetric", "[", 
+  RowBox[{"met", ",", "ch"}], "]"}]], "Input",
+ CellChangeTimes->{{3.726983562242237*^9, 3.726983562405376*^9}, 
+   3.815345296851982*^9},
+ CellLabel->"In[12]:=",ExpressionUUID->"a1584f9e-2dad-4bbe-a894-f1192f1da080"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MetricCompute", "[", 
+   RowBox[{"met", ",", "ch", ",", "All"}], "]"}], "//", "Timing"}]], "Input",
+ CellChangeTimes->{{3.6780389338673563`*^9, 3.678038934211399*^9}, {
+   3.683663897700015*^9, 3.683663924436688*^9}, {3.683664256800693*^9, 
+   3.683664257254137*^9}, {3.683729012487858*^9, 3.683729041478909*^9}, {
+   3.683729078249488*^9, 3.683729114228325*^9}, {3.683730368861829*^9, 
+   3.683730371692428*^9}, {3.683730437916759*^9, 3.6837304425779448`*^9}, 
+   3.683899267039195*^9, {3.6838997825463743`*^9, 3.6838997833100567`*^9}, {
+   3.726983587354043*^9, 3.726983587640478*^9}, 3.815345302730414*^9},
+ CellLabel->"In[13]:=",ExpressionUUID->"3bf4f09c-c285-4e11-a186-94d22ac8e340"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.038725`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.678038934573764*^9, 3.683663870951354*^9, 3.683663904028857*^9, 
+   3.683664443965742*^9, 3.68366546249653*^9, 3.68366984113056*^9, {
+   3.683729020180068*^9, 3.6837290420696983`*^9}, 3.6837290815154943`*^9, 
+   3.683729245838746*^9, 3.68373022552682*^9, 3.6837303939209948`*^9, 
+   3.683730463829289*^9, {3.683899241383113*^9, 3.6838992687367268`*^9}, {
+   3.6838997691316357`*^9, 3.683899785934819*^9}, 3.6839001555843983`*^9, 
+   3.683900348236885*^9, 3.6839015396257343`*^9, 3.683902058590644*^9, 
+   3.683902169429448*^9, 3.683904713199085*^9, 3.726976927826414*^9, 
+   3.726978430503454*^9, 3.7269789772307673`*^9, 3.726980272247139*^9, 
+   3.7269818957815323`*^9, 3.726982186901828*^9, 3.726983128587101*^9, 
+   3.72698330631901*^9, 3.726983452760777*^9, {3.72698571376013*^9, 
+   3.726985718353331*^9}, 3.7269864683833637`*^9, 3.727001530158107*^9, 
+   3.727002242241899*^9, 3.727008513847035*^9, 3.727009054418432*^9, 
+   3.815345303506229*^9, 3.81534538864957*^9, 3.8153483700832367`*^9, 
+   3.815351346946587*^9, 3.815351410025675*^9, 3.815351508183976*^9, 
+   3.8153518167645187`*^9, 3.815352178190765*^9, 3.815352574386977*^9, 
+   3.8153545180144157`*^9, 3.815355730258711*^9, 3.815515140965425*^9, 
+   3.815515177093711*^9, 3.815520972847983*^9, 3.8155210521261063`*^9, 
+   3.815521295323748*^9, 3.815696632227685*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"b7f38a4b-d045-4bec-9996-9951eabace86"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vec", "=", 
+  RowBox[{"CTensor", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"dx", ",", "dy", ",", "dz"}], "}"}], ",", 
+    RowBox[{"{", "ch", "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.815345446877509*^9, 3.815345498321402*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"fa9fa95e-ffc8-434e-9e09-903d93919553"],
+
+Cell[BoxData[
+ RowBox[{"CTensor", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"dx", ",", "dy", ",", "dz"}], "}"}], ",", 
+   RowBox[{"{", "ch", "}"}], ",", "0"}], "]"}]], "Output",
+ CellChangeTimes->{{3.815345487624803*^9, 3.815345509340554*^9}, 
+   3.815348377822609*^9, 3.815351348123581*^9, 3.81535141134671*^9, 
+   3.8153515094641247`*^9, 3.815351828235733*^9, 3.81535217974741*^9, 
+   3.815352579446919*^9, 3.815354518082037*^9, 3.8153557302689543`*^9, 
+   3.815515140971323*^9, 3.815515177590042*^9, 3.815521054358201*^9, 
+   3.815521296250039*^9, 3.815696633984095*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"bd6a9785-b468-4c55-9cac-ff8248ef82e6"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{"newm", ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Eigenvectors", "[", "matrix", "]"}], ".", "matrix", ".", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"Eigenvectors", "[", "matrix", "]"}], "]"}]}], "//", 
+   "FullSimplify"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rot", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Sqrt", "@", 
+      RowBox[{"Inverse", "[", "newm", "]"}]}], ".", 
+     RowBox[{"Eigenvectors", "[", "matrix", "]"}]}], "//", "FullSimplify"}]}],
+   ";"}]}], "Input",
+ CellChangeTimes->{{3.815347844895528*^9, 3.8153479189219637`*^9}, {
+   3.815348018228932*^9, 3.815348028942828*^9}, {3.815348420704102*^9, 
+   3.815348428174129*^9}, {3.815348717951705*^9, 3.8153487238547907`*^9}, 
+   3.815351352132777*^9},
+ CellLabel->"In[17]:=",ExpressionUUID->"910e94ab-02cf-463d-b259-4275527b0d3d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tetrad", ":=", 
+   RowBox[{"CTensor", "[", 
+    RowBox[{"rot", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "diag"}], ",", "ch"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"invtetrad", ":=", 
+   RowBox[{
+    RowBox[{"CTensor", "[", 
+     RowBox[{
+      RowBox[{"Transpose", "[", 
+       RowBox[{"Inverse", "[", "rot", "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"diag", ",", 
+        RowBox[{"-", "ch"}]}], "}"}]}], "]"}], "//", "FullSimplify"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.815351293626171*^9, 3.815351295456609*^9}, {
+  3.8153518406784*^9, 3.815351840859378*^9}, {3.815352186512609*^9, 
+  3.815352188380275*^9}, {3.8153528543274097`*^9, 3.8153528548110323`*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"b6a447d8-d32b-4d51-98ad-99ca29d7ca7b"],
+
+Cell[BoxData[
+ RowBox[{"DefBasis", "[", 
+  RowBox[{"diag", ",", "TangentMan", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+   RowBox[{"BasisColor", "\[Rule]", "Blue"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"BasisChange", "\[Rule]", "tetrad"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.815352193206502*^9, 3.815352223978722*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"e6b19b3b-ebb8-43c7-b4ce-593fb8de7b9d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"del", "[", 
+   RowBox[{
+    RowBox[{"-", "\[Alpha]_"}], ",", 
+    RowBox[{"-", "\[Beta]_"}]}], "]"}], "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"tetrad", "[", 
+      RowBox[{
+       RowBox[{"-", "\[Alpha]"}], ",", "\[Mu]"}], "]"}], 
+     RowBox[{"met", "[", 
+      RowBox[{
+       RowBox[{"-", "\[Mu]"}], ",", 
+       RowBox[{"-", "\[Nu]"}]}], "]"}], 
+     RowBox[{"tetrad", "[", 
+      RowBox[{
+       RowBox[{"-", "\[Beta]"}], ",", "\[Nu]"}], "]"}]}], "//", 
+    "ContractBasis"}], "//", "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.815348226295484*^9, 3.8153483239370213`*^9}, {
+   3.815348523129855*^9, 3.815348526770988*^9}, {3.815349247945693*^9, 
+   3.81534926861053*^9}, 3.815349399906273*^9, {3.815352330465866*^9, 
+   3.815352333128191*^9}, 3.815352822740974*^9},
+ CellLabel->"In[22]:=",ExpressionUUID->"ff44cfa3-4303-48fd-9850-46649b4837d0"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[GridBox[{
+     {
+      StyleBox[
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", GridBox[{
+           {
+            TagBox[
+             TooltipBox["1",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", "1"}]],
+             Annotation[#, {1, 1} -> 1, "Tooltip"]& ], 
+            TagBox[
+             TooltipBox["0",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+             Annotation[#, {1, 2} -> 0, "Tooltip"]& ], 
+            TagBox[
+             TooltipBox["0",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+             Annotation[#, {1, 3} -> 0, "Tooltip"]& ]},
+           {
+            TagBox[
+             TooltipBox["0",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+             Annotation[#, {2, 1} -> 0, "Tooltip"]& ], 
+            TagBox[
+             TooltipBox["1",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", "1"}]],
+             Annotation[#, {2, 2} -> 1, "Tooltip"]& ], 
+            TagBox[
+             TooltipBox["0",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+             Annotation[#, {2, 3} -> 0, "Tooltip"]& ]},
+           {
+            TagBox[
+             TooltipBox["0",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+             Annotation[#, {3, 1} -> 0, "Tooltip"]& ], 
+            TagBox[
+             TooltipBox["0",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+             Annotation[#, {3, 2} -> 0, "Tooltip"]& ], 
+            TagBox[
+             TooltipBox["1",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", "1"}]],
+             Annotation[#, {3, 3} -> 1, "Tooltip"]& ]}
+          },
+          GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.7]}, 
+              Offset[0.27999999999999997`]}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}}], "\[NoBreak]", ")"}],
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]],
+       StripOnInput->False,
+       FontSize->Small], 
+      StyleBox[GridBox[{
+         {" ", " "},
+         {"\[Beta]", "\[Alpha]"}
+        },
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.]}, "Rows" -> {{
+             Offset[0.]}}}],
+       FontSize->Rational[39, 4]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.034999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   ShowAutoStyles->False,
+   AutoSpacing->False],
+  xAct`xCoba`CTensor[{{1, 0, 0}, {0, 1, 0}, {0, 0, 
+   1}}, {-$CellContext`diag, -$CellContext`diag}, 
+   0][-$CellContext`\[Beta], -$CellContext`\[Alpha]],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.815352823114153*^9, 3.815354521268586*^9, 
+  3.815355733437807*^9, 3.815515143514987*^9, 3.815515182278216*^9, 
+  3.815521061150546*^9, 3.815521328672159*^9, 3.81569664068819*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"ad7cfc8d-6393-4a39-82c1-a6189336bc83"]
+}, Open  ]],
+
+Cell[BoxData["Print"], "Input",
+ CellChangeTimes->{{3.815697231499921*^9, 
+  3.8156972329481897`*^9}},ExpressionUUID->"7d4eabcd-2146-4fad-8aca-\
+080be16510d0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"tetrad", "[", 
+        RowBox[{"\[Alpha]", ",", 
+         RowBox[{"-", "\[Mu]"}]}], "]"}], 
+       RowBox[{"tetrad", "[", 
+        RowBox[{"\[Beta]", ",", 
+         RowBox[{"-", "\[Nu]"}]}], "]"}], 
+       RowBox[{"del", "[", 
+        RowBox[{
+         RowBox[{"-", "\[Alpha]"}], ",", 
+         RowBox[{"-", "\[Beta]"}]}], "]"}]}], "-", 
+      RowBox[{"met", "[", 
+       RowBox[{
+        RowBox[{"-", "\[Mu]"}], ",", 
+        RowBox[{"-", "\[Nu]"}]}], "]"}]}], "\[Equal]", "0"}], "//", 
+    "FullSimplify"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Your program work nicely!\>\"", ",", "18", ",", "Purple"}], 
+     "]"}], "]"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Your program sucks!\>\"", ",", "18", ",", "Red"}], "]"}], 
+    "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.815349201690544*^9, 3.815349223191004*^9}, {
+  3.815349272453644*^9, 3.81534934086736*^9}, {3.815349410686839*^9, 
+  3.8153494287324533`*^9}, {3.815349530029443*^9, 3.8153495428063726`*^9}, {
+  3.8153500309491777`*^9, 3.8153500377587633`*^9}, {3.8153516261525908`*^9, 
+  3.815351644656674*^9}, {3.81535188989219*^9, 3.8153520515478773`*^9}, {
+  3.815352155557971*^9, 3.815352164527841*^9}, {3.815352232629753*^9, 
+  3.8153523205794*^9}, {3.8153529146899757`*^9, 3.815352920678117*^9}, {
+  3.815697300267643*^9, 3.8156974245642557`*^9}},
+ CellLabel->"In[48]:=",ExpressionUUID->"0181c93e-cd27-488e-b8aa-c6276d6fe8c1"],
+
+Cell[BoxData[
+ StyleBox["\<\"Your program work nicely!\"\>",
+  StripOnInput->False,
+  LineColor->RGBColor[0.5, 0, 0.5],
+  FrontFaceColor->RGBColor[0.5, 0, 0.5],
+  BackFaceColor->RGBColor[0.5, 0, 0.5],
+  GraphicsColor->RGBColor[0.5, 0, 0.5],
+  FontSize->18,
+  FontColor->RGBColor[0.5, 0, 0.5]]], "Print",
+ CellChangeTimes->{{3.815697344353476*^9, 3.8156974251263227`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[48]:=",ExpressionUUID->"0228ecf7-7afd-4f83-8036-54d318af0c56"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Theta]", "[", "\[Alpha]_", "]"}], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"vec", "[", "\[Mu]", "]"}], 
+     RowBox[{"invtetrad", "[", 
+      RowBox[{"\[Alpha]", ",", 
+       RowBox[{"-", "\[Mu]"}]}], "]"}]}], "//", "FullSimplify"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.815350093786448*^9, 3.815350141122368*^9}, {
+  3.815351662729055*^9, 3.81535166309662*^9}, {3.8153528593163643`*^9, 
+  3.815352862482147*^9}, {3.815353478266498*^9, 3.815353500211154*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"74ff0601-bd7e-450e-84cb-0d5aec0b37be"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Omega]", "[", 
+   RowBox[{"\[Nu]_", ",", 
+    RowBox[{"-", "\[Mu]_"}]}], "]"}], "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Christoffel", "[", 
+      RowBox[{"cd", ",", "PDch"}], "]"}], "[", 
+     RowBox[{"\[Nu]", ",", 
+      RowBox[{"-", "\[Alpha]"}], ",", 
+      RowBox[{"-", "\[Mu]"}]}], "]"}], 
+    RowBox[{"\[Theta]", "[", "\[Alpha]", "]"}]}], "//", 
+   "ContractBasis"}]}]], "Input",
+ CellChangeTimes->{{3.8153501566406517`*^9, 3.815350188827137*^9}, {
+   3.8153505776108418`*^9, 3.8153506071895113`*^9}, {3.8153506529674788`*^9, 
+   3.8153506626091948`*^9}, 3.815351565373221*^9, {3.815352413050795*^9, 
+   3.8153524691738577`*^9}, 3.815352702211175*^9, {3.815352989393013*^9, 
+   3.8153529939265833`*^9}, {3.81535346470691*^9, 3.8153534947119102`*^9}, {
+   3.81552253281396*^9, 3.815522537606904*^9}, 3.815696648906316*^9},
+ CellLabel->"In[50]:=",ExpressionUUID->"27ed68bf-1f26-4314-a732-955d15aaa00d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[GridBox[{
+     {
+      StyleBox[
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", GridBox[{
+           {
+            TagBox[
+             TooltipBox["0",
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+             Annotation[#, {1, 1} -> 0, "Tooltip"]& ], 
+            TagBox[
+             TooltipBox[
+              RowBox[{
+               RowBox[{"-", 
+                FractionBox[
+                 RowBox[{"dz", " ", 
+                  InterpretationBox[
+                   StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`j,
+                   Editable->False]}], "2"]}], "-", 
+               RowBox[{"dy", " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False], "2"], " ", 
+                InterpretationBox[
+                 StyleBox["x",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`x[],
+                 Editable->False]}]}],
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", 
+                RowBox[{
+                  RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{"dz", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"]}], "-", 
+                  RowBox[{"dy", " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}]}]],
+             
+             Annotation[#, {1, 2} -> 
+              Rational[-1, 
+                  2] $CellContext`dz $CellContext`j - $CellContext`dy \
+$CellContext`j^2 $CellContext`x[], "Tooltip"]& ], 
+            TagBox[
+             TooltipBox[
+              RowBox[{"-", 
+               FractionBox[
+                RowBox[{"dy", " ", 
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False]}], "2"]}],
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", 
+                RowBox[{"-", 
+                  FractionBox[
+                   RowBox[{"dy", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"]}]}]],
+             
+             Annotation[#, {1, 3} -> 
+              Rational[-1, 2] $CellContext`dy $CellContext`j, "Tooltip"]& ]},
+           {
+            TagBox[
+             TooltipBox[
+              RowBox[{
+               FractionBox[
+                RowBox[{"dz", " ", 
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False]}], "2"], "+", 
+               RowBox[{
+                FractionBox["1", "2"], " ", "dy", " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False], "2"], " ", 
+                InterpretationBox[
+                 StyleBox["x",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`x[],
+                 Editable->False]}]}],
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+                RowBox[{
+                  FractionBox[
+                   RowBox[{"dz", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"], "+", 
+                  RowBox[{
+                    FractionBox["1", "2"], " ", "dy", " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}]}]],
+             
+             Annotation[#, {2, 1} -> 
+              Rational[1, 2] $CellContext`dz $CellContext`j + 
+               Rational[
+                 1, 2] $CellContext`dy $CellContext`j^2 $CellContext`x[], 
+              "Tooltip"]& ], 
+            TagBox[
+             TooltipBox[
+              RowBox[{
+               FractionBox["1", "2"], " ", "dx", " ", 
+               SuperscriptBox[
+                InterpretationBox[
+                 StyleBox["j",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`j,
+                 Editable->False], "2"], " ", 
+               InterpretationBox[
+                StyleBox["x",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`x[],
+                Editable->False]}],
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
+                RowBox[{
+                  FractionBox["1", "2"], " ", "dx", " ", 
+                  SuperscriptBox[
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                  InterpretationBox[
+                   StyleBox[
+                   "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                   $CellContext`x[], Editable -> False]}]}]],
+             
+             Annotation[#, {2, 2} -> 
+              Rational[
+                1, 2] $CellContext`dx $CellContext`j^2 $CellContext`x[], 
+              "Tooltip"]& ], 
+            TagBox[
+             TooltipBox[
+              FractionBox[
+               RowBox[{"dx", " ", 
+                InterpretationBox[
+                 StyleBox["j",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`j,
+                 Editable->False]}], "2"],
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", 
+                FractionBox[
+                 RowBox[{"dx", " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"]}]],
+             
+             Annotation[#, {2, 3} -> 
+              Rational[1, 2] $CellContext`dx $CellContext`j, "Tooltip"]& ]},
+           {
+            TagBox[
+             TooltipBox[
+              RowBox[{
+               FractionBox[
+                RowBox[{"dy", " ", 
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False]}], "2"], "-", 
+               RowBox[{
+                FractionBox["1", "2"], " ", "dz", " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False], "2"], " ", 
+                InterpretationBox[
+                 StyleBox["x",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`x[],
+                 Editable->False]}], "-", 
+               RowBox[{
+                FractionBox["1", "2"], " ", "dy", " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False], "3"], " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["x",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`x[],
+                  Editable->False], "2"]}]}],
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", 
+                RowBox[{
+                  FractionBox[
+                   RowBox[{"dy", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"], "-", 
+                  RowBox[{
+                    FractionBox["1", "2"], " ", "dz", " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}], "-", 
+                  RowBox[{
+                    FractionBox["1", "2"], " ", "dy", " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "3"], " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False], "2"]}]}]}]],
+             
+             Annotation[#, {3, 1} -> 
+              Rational[1, 2] $CellContext`dy $CellContext`j + 
+               Rational[-1, 
+                  2] $CellContext`dz $CellContext`j^2 $CellContext`x[] + 
+               Rational[-1, 
+                  2] $CellContext`dy $CellContext`j^3 $CellContext`x[]^2, 
+              "Tooltip"]& ], 
+            TagBox[
+             TooltipBox[
+              RowBox[{
+               FractionBox[
+                RowBox[{"dx", " ", 
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False]}], "2"], "-", 
+               RowBox[{
+                FractionBox["1", "2"], " ", "dx", " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False], "3"], " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["x",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`x[],
+                  Editable->False], "2"]}]}],
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", 
+                RowBox[{
+                  FractionBox[
+                   RowBox[{"dx", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"], "-", 
+                  RowBox[{
+                    FractionBox["1", "2"], " ", "dx", " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "3"], " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False], "2"]}]}]}]],
+             
+             Annotation[#, {3, 2} -> 
+              Rational[1, 2] $CellContext`dx $CellContext`j + 
+               Rational[-1, 
+                  2] $CellContext`dx $CellContext`j^3 $CellContext`x[]^2, 
+              "Tooltip"]& ], 
+            TagBox[
+             TooltipBox[
+              RowBox[{
+               RowBox[{"-", 
+                FractionBox["1", "2"]}], " ", "dx", " ", 
+               SuperscriptBox[
+                InterpretationBox[
+                 StyleBox["j",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`j,
+                 Editable->False], "2"], " ", 
+               InterpretationBox[
+                StyleBox["x",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`x[],
+                Editable->False]}],
+              RowBox[{
+                RowBox[{"{", 
+                  RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
+                RowBox[{
+                  RowBox[{"-", 
+                    FractionBox["1", "2"]}], " ", "dx", " ", 
+                  SuperscriptBox[
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                  InterpretationBox[
+                   StyleBox[
+                   "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                   $CellContext`x[], Editable -> False]}]}]],
+             
+             Annotation[#, {3, 3} -> 
+              Rational[-1, 
+                 2] $CellContext`dx $CellContext`j^2 $CellContext`x[], 
+              "Tooltip"]& ]}
+          },
+          GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.7]}, 
+              Offset[0.27999999999999997`]}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}}], "\[NoBreak]", ")"}],
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]],
+       StripOnInput->False,
+       FontSize->Small], 
+      StyleBox[GridBox[{
+         {"\[Nu]", " "},
+         {" ", "\[Mu]"}
+        },
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.]}, "Rows" -> {{
+             Offset[0.]}}}],
+       FontSize->Rational[39, 4]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.034999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   ShowAutoStyles->False,
+   AutoSpacing->False],
+  xAct`xCoba`CTensor[{{
+    0, Rational[-1, 
+        2] $CellContext`dz $CellContext`j - $CellContext`dy $CellContext`j^2 \
+$CellContext`x[], Rational[-1, 2] $CellContext`dy $CellContext`j}, {
+    Rational[1, 2] $CellContext`dz $CellContext`j + 
+     Rational[1, 2] $CellContext`dy $CellContext`j^2 $CellContext`x[], 
+     Rational[1, 2] $CellContext`dx $CellContext`j^2 $CellContext`x[], 
+     Rational[1, 2] $CellContext`dx $CellContext`j}, {
+    Rational[1, 2] $CellContext`dy $CellContext`j + 
+     Rational[-1, 2] $CellContext`dz $CellContext`j^2 $CellContext`x[] + 
+     Rational[-1, 2] $CellContext`dy $CellContext`j^3 $CellContext`x[]^2, 
+     Rational[1, 2] $CellContext`dx $CellContext`j + 
+     Rational[-1, 2] $CellContext`dx $CellContext`j^3 $CellContext`x[]^2, 
+     Rational[-1, 
+       2] $CellContext`dx $CellContext`j^2 $CellContext`x[]}}, \
+{$CellContext`ch, -$CellContext`ch}, 
+   0][$CellContext`\[Nu], -$CellContext`\[Mu]],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.8153501659761353`*^9, 3.81535018921201*^9}, {
+   3.815350592831534*^9, 3.8153506103791*^9}, {3.81535065589674*^9, 
+   3.81535066298919*^9}, {3.815351546022525*^9, 3.8153515658144913`*^9}, 
+   3.8153516646523542`*^9, 3.81535233763486*^9, {3.815352433234189*^9, 
+   3.8153524696592093`*^9}, {3.8153525888042603`*^9, 3.815352598127643*^9}, 
+   3.8153527441428022`*^9, {3.8153528685359783`*^9, 3.815352871961883*^9}, 
+   3.8153530034702806`*^9, {3.815353468101318*^9, 3.815353502115148*^9}, 
+   3.8153535402016907`*^9, 3.815354523108917*^9, 3.8153557363858852`*^9, 
+   3.815515145180235*^9, 3.8155151860271053`*^9, 3.815521064989787*^9, 
+   3.815521330869451*^9, 3.815522538148285*^9, {3.815696643692993*^9, 
+   3.815696649530005*^9}, 3.815697429081316*^9},
+ CellLabel->"Out[50]=",ExpressionUUID->"9fb79ff1-07b2-4c13-8207-b90427fd8995"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Wedge", "[", 
+    RowBox[{
+     RowBox[{"\[Omega]", "[", 
+      RowBox[{"\[Alpha]", ",", 
+       RowBox[{"-", "\[Mu]"}]}], "]"}], ",", 
+     RowBox[{"\[Omega]", "[", 
+      RowBox[{"\[Mu]", ",", 
+       RowBox[{"-", "\[Beta]"}]}], "]"}]}], "]"}], "//", "FullSimplify"}], "//",
+   "Evaluate"}]], "Input",
+ CellChangeTimes->{{3.815697060247781*^9, 3.815697094732497*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"a4fbd24c-7f18-40b0-8f01-69d2a866d995"],
+
+Cell[BoxData[
+ RowBox[{
+  InterpretationBox[
+   StyleBox[GridBox[{
+      {
+       StyleBox[
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", GridBox[{
+            {
+             TagBox[
+              TooltipBox["0",
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+              Annotation[#, {1, 1} -> 0, "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                RowBox[{"-", 
+                 FractionBox["1", "2"]}], " ", 
+                InterpretationBox[
+                 StyleBox["j",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`j,
+                 Editable->False], " ", 
+                RowBox[{"(", 
+                 RowBox[{"dz", "+", 
+                  RowBox[{"2", " ", "dy", " ", 
+                   InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], " ", 
+                   InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False]}]}], ")"}]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   RowBox[{"-", 
+                    FractionBox["1", "2"]}], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                   RowBox[{"(", 
+                    RowBox[{"dz", "+", 
+                    RowBox[{"2", " ", "dy", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}], ")"}]}]}]],
+              
+              Annotation[#, {1, 2} -> 
+               Rational[-1, 2] $CellContext`j ($CellContext`dz + 
+                 2 $CellContext`dy $CellContext`j $CellContext`x[]), 
+               "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{"-", 
+                FractionBox[
+                 RowBox[{"dy", " ", 
+                  InterpretationBox[
+                   StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`j,
+                   Editable->False]}], "2"]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", 
+                 RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{"dy", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"]}]}]],
+              
+              Annotation[#, {1, 3} -> 
+               Rational[-1, 2] $CellContext`dy $CellContext`j, 
+               "Tooltip"]& ]},
+            {
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                FractionBox["1", "2"], " ", 
+                InterpretationBox[
+                 StyleBox["j",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`j,
+                 Editable->False], " ", 
+                RowBox[{"(", 
+                 RowBox[{"dz", "+", 
+                  RowBox[{"dy", " ", 
+                   InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], " ", 
+                   InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False]}]}], ")"}]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   FractionBox["1", "2"], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                   RowBox[{"(", 
+                    RowBox[{"dz", "+", 
+                    RowBox[{"dy", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}], ")"}]}]}]],
+              
+              Annotation[#, {2, 1} -> 
+               Rational[
+                 1, 2] $CellContext`j ($CellContext`dz + $CellContext`dy \
+$CellContext`j $CellContext`x[]), "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                FractionBox["1", "2"], " ", "dx", " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False], "2"], " ", 
+                InterpretationBox[
+                 StyleBox["x",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`x[],
+                 Editable->False]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   FractionBox["1", "2"], " ", "dx", " ", 
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}]],
+              
+              Annotation[#, {2, 2} -> 
+               Rational[
+                 1, 2] $CellContext`dx $CellContext`j^2 $CellContext`x[], 
+               "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               FractionBox[
+                RowBox[{"dx", " ", 
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False]}], "2"],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", 
+                 FractionBox[
+                  RowBox[{"dx", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"]}]],
+              
+              Annotation[#, {2, 3} -> 
+               Rational[1, 2] $CellContext`dx $CellContext`j, "Tooltip"]& ]},
+            {
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                RowBox[{"-", 
+                 FractionBox["1", "2"]}], " ", 
+                InterpretationBox[
+                 StyleBox["j",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`j,
+                 Editable->False], " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"dz", " ", 
+                   InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], " ", 
+                   InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False]}], "+", 
+                  RowBox[{"dy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], "2"], " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False], "2"]}]}], ")"}]}]}], ")"}]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   RowBox[{"-", 
+                    FractionBox["1", "2"]}], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"dz", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}], "+", 
+                    RowBox[{"dy", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False], "2"]}]}], ")"}]}]}],
+                     ")"}]}]}]],
+              
+              Annotation[#, {3, 1} -> 
+               Rational[-1, 
+                  2] $CellContext`j ($CellContext`dz $CellContext`j \
+$CellContext`x[] + $CellContext`dy (-1 + $CellContext`j^2 \
+$CellContext`x[]^2)), "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                FractionBox["1", "2"], " ", "dx", " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  InterpretationBox[
+                   StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`j,
+                   Editable->False], "-", 
+                  RowBox[{
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], "3"], " ", 
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False], "2"]}]}], ")"}]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   FractionBox["1", "2"], " ", "dx", " ", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "-", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "3"], " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False], "2"]}]}], ")"}]}]}]],
+              
+              Annotation[#, {3, 2} -> 
+               Rational[
+                 1, 2] $CellContext`dx ($CellContext`j - $CellContext`j^3 \
+$CellContext`x[]^2), "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                RowBox[{"-", 
+                 FractionBox["1", "2"]}], " ", "dx", " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False], "2"], " ", 
+                InterpretationBox[
+                 StyleBox["x",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`x[],
+                 Editable->False]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   RowBox[{"-", 
+                    FractionBox["1", "2"]}], " ", "dx", " ", 
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}]],
+              
+              Annotation[#, {3, 3} -> 
+               Rational[-1, 
+                  2] $CellContext`dx $CellContext`j^2 $CellContext`x[], 
+               "Tooltip"]& ]}
+           },
+           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+           GridBoxSpacings->{"Columns" -> {
+               Offset[0.27999999999999997`], {
+                Offset[0.7]}, 
+               Offset[0.27999999999999997`]}, "Rows" -> {
+               Offset[0.2], {
+                Offset[0.4]}, 
+               Offset[0.2]}}], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]],
+        StripOnInput->False,
+        FontSize->Small], 
+       StyleBox[GridBox[{
+          {"\[Alpha]", " "},
+          {" ", "\[Mu]"}
+         },
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.]}, "Rows" -> {{
+              Offset[0.]}}}],
+        FontSize->Rational[39, 4]]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.034999999999999996`]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   xAct`xCoba`CTensor[{{
+     0, Rational[-1, 2] $CellContext`j ($CellContext`dz + 
+       2 $CellContext`dy $CellContext`j $CellContext`x[]), 
+      Rational[-1, 2] $CellContext`dy $CellContext`j}, {
+     Rational[1, 
+        2] $CellContext`j ($CellContext`dz + $CellContext`dy $CellContext`j \
+$CellContext`x[]), 
+      Rational[1, 2] $CellContext`dx $CellContext`j^2 $CellContext`x[], 
+      Rational[1, 2] $CellContext`dx $CellContext`j}, {
+     Rational[-1, 
+        2] $CellContext`j ($CellContext`dz $CellContext`j $CellContext`x[] + \
+$CellContext`dy (-1 + $CellContext`j^2 $CellContext`x[]^2)), 
+      Rational[1, 
+        2] $CellContext`dx ($CellContext`j - $CellContext`j^3 \
+$CellContext`x[]^2), 
+      Rational[-1, 
+        2] $CellContext`dx $CellContext`j^2 $CellContext`x[]}}, \
+{$CellContext`ch, -$CellContext`ch}, 
+    0][$CellContext`\[Alpha], -$CellContext`\[Mu]],
+   Editable->False], "\[Wedge]", 
+  InterpretationBox[
+   StyleBox[GridBox[{
+      {
+       StyleBox[
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", GridBox[{
+            {
+             TagBox[
+              TooltipBox["0",
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+              Annotation[#, {1, 1} -> 0, "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                RowBox[{"-", 
+                 FractionBox["1", "2"]}], " ", 
+                InterpretationBox[
+                 StyleBox["j",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`j,
+                 Editable->False], " ", 
+                RowBox[{"(", 
+                 RowBox[{"dz", "+", 
+                  RowBox[{"2", " ", "dy", " ", 
+                   InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], " ", 
+                   InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False]}]}], ")"}]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   RowBox[{"-", 
+                    FractionBox["1", "2"]}], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                   RowBox[{"(", 
+                    RowBox[{"dz", "+", 
+                    RowBox[{"2", " ", "dy", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}], ")"}]}]}]],
+              
+              Annotation[#, {1, 2} -> 
+               Rational[-1, 2] $CellContext`j ($CellContext`dz + 
+                 2 $CellContext`dy $CellContext`j $CellContext`x[]), 
+               "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{"-", 
+                FractionBox[
+                 RowBox[{"dy", " ", 
+                  InterpretationBox[
+                   StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`j,
+                   Editable->False]}], "2"]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", 
+                 RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{"dy", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"]}]}]],
+              
+              Annotation[#, {1, 3} -> 
+               Rational[-1, 2] $CellContext`dy $CellContext`j, 
+               "Tooltip"]& ]},
+            {
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                FractionBox["1", "2"], " ", 
+                InterpretationBox[
+                 StyleBox["j",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`j,
+                 Editable->False], " ", 
+                RowBox[{"(", 
+                 RowBox[{"dz", "+", 
+                  RowBox[{"dy", " ", 
+                   InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], " ", 
+                   InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False]}]}], ")"}]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   FractionBox["1", "2"], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                   RowBox[{"(", 
+                    RowBox[{"dz", "+", 
+                    RowBox[{"dy", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}], ")"}]}]}]],
+              
+              Annotation[#, {2, 1} -> 
+               Rational[
+                 1, 2] $CellContext`j ($CellContext`dz + $CellContext`dy \
+$CellContext`j $CellContext`x[]), "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                FractionBox["1", "2"], " ", "dx", " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False], "2"], " ", 
+                InterpretationBox[
+                 StyleBox["x",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`x[],
+                 Editable->False]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   FractionBox["1", "2"], " ", "dx", " ", 
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}]],
+              
+              Annotation[#, {2, 2} -> 
+               Rational[
+                 1, 2] $CellContext`dx $CellContext`j^2 $CellContext`x[], 
+               "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               FractionBox[
+                RowBox[{"dx", " ", 
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False]}], "2"],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", 
+                 FractionBox[
+                  RowBox[{"dx", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False]}], "2"]}]],
+              
+              Annotation[#, {2, 3} -> 
+               Rational[1, 2] $CellContext`dx $CellContext`j, "Tooltip"]& ]},
+            {
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                RowBox[{"-", 
+                 FractionBox["1", "2"]}], " ", 
+                InterpretationBox[
+                 StyleBox["j",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`j,
+                 Editable->False], " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"dz", " ", 
+                   InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], " ", 
+                   InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False]}], "+", 
+                  RowBox[{"dy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], "2"], " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False], "2"]}]}], ")"}]}]}], ")"}]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   RowBox[{"-", 
+                    FractionBox["1", "2"]}], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"dz", " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], " ", 
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}], "+", 
+                    RowBox[{"dy", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False], "2"]}]}], ")"}]}]}],
+                     ")"}]}]}]],
+              
+              Annotation[#, {3, 1} -> 
+               Rational[-1, 
+                  2] $CellContext`j ($CellContext`dz $CellContext`j \
+$CellContext`x[] + $CellContext`dy (-1 + $CellContext`j^2 \
+$CellContext`x[]^2)), "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                FractionBox["1", "2"], " ", "dx", " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  InterpretationBox[
+                   StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`j,
+                   Editable->False], "-", 
+                  RowBox[{
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox["j",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`j,
+                    Editable->False], "3"], " ", 
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox["x",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`x[],
+                    Editable->False], "2"]}]}], ")"}]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   FractionBox["1", "2"], " ", "dx", " ", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "-", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "3"], " ", 
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False], "2"]}]}], ")"}]}]}]],
+              
+              Annotation[#, {3, 2} -> 
+               Rational[
+                 1, 2] $CellContext`dx ($CellContext`j - $CellContext`j^3 \
+$CellContext`x[]^2), "Tooltip"]& ], 
+             TagBox[
+              TooltipBox[
+               RowBox[{
+                RowBox[{"-", 
+                 FractionBox["1", "2"]}], " ", "dx", " ", 
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["j",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`j,
+                  Editable->False], "2"], " ", 
+                InterpretationBox[
+                 StyleBox["x",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`x[],
+                 Editable->False]}],
+               RowBox[{
+                 RowBox[{"{", 
+                   RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
+                 RowBox[{
+                   RowBox[{"-", 
+                    FractionBox["1", "2"]}], " ", "dx", " ", 
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"j"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`j, Editable -> False], "2"], " ", 
+                   InterpretationBox[
+                    StyleBox[
+                    "x", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    $CellContext`x[], Editable -> False]}]}]],
+              
+              Annotation[#, {3, 3} -> 
+               Rational[-1, 
+                  2] $CellContext`dx $CellContext`j^2 $CellContext`x[], 
+               "Tooltip"]& ]}
+           },
+           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+           GridBoxSpacings->{"Columns" -> {
+               Offset[0.27999999999999997`], {
+                Offset[0.7]}, 
+               Offset[0.27999999999999997`]}, "Rows" -> {
+               Offset[0.2], {
+                Offset[0.4]}, 
+               Offset[0.2]}}], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]],
+        StripOnInput->False,
+        FontSize->Small], 
+       StyleBox[GridBox[{
+          {"\[Mu]", " "},
+          {" ", "\[Beta]"}
+         },
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.]}, "Rows" -> {{
+              Offset[0.]}}}],
+        FontSize->Rational[39, 4]]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.034999999999999996`]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   xAct`xCoba`CTensor[{{
+     0, Rational[-1, 2] $CellContext`j ($CellContext`dz + 
+       2 $CellContext`dy $CellContext`j $CellContext`x[]), 
+      Rational[-1, 2] $CellContext`dy $CellContext`j}, {
+     Rational[1, 
+        2] $CellContext`j ($CellContext`dz + $CellContext`dy $CellContext`j \
+$CellContext`x[]), 
+      Rational[1, 2] $CellContext`dx $CellContext`j^2 $CellContext`x[], 
+      Rational[1, 2] $CellContext`dx $CellContext`j}, {
+     Rational[-1, 
+        2] $CellContext`j ($CellContext`dz $CellContext`j $CellContext`x[] + \
+$CellContext`dy (-1 + $CellContext`j^2 $CellContext`x[]^2)), 
+      Rational[1, 
+        2] $CellContext`dx ($CellContext`j - $CellContext`j^3 \
+$CellContext`x[]^2), 
+      Rational[-1, 
+        2] $CellContext`dx $CellContext`j^2 $CellContext`x[]}}, \
+{$CellContext`ch, -$CellContext`ch}, 
+    0][$CellContext`\[Mu], -$CellContext`\[Beta]],
+   Editable->False]}]], "Output",
+ CellChangeTimes->{{3.8156970813958893`*^9, 3.815697095015771*^9}, 
+   3.815697431067773*^9},
+ CellLabel->"Out[51]=",ExpressionUUID->"9fc09558-57ec-4e03-9a98-f089b61c62ef"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 686},
+WindowMargins->{{245, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"a0bf9c97-2bab-4257-896b-79b18c8a52d3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 191, 3, 98, "Title",ExpressionUUID->"3f1fff73-a963-44e9-b16a-a12f43bfefec"],
+Cell[774, 27, 236, 6, 32, "Item",ExpressionUUID->"00b602eb-bbab-475a-bde6-a678151fe3e6"],
+Cell[CellGroupData[{
+Cell[1035, 37, 152, 3, 30, "Input",ExpressionUUID->"a0cfe543-e9ff-4cc7-ad46-24a46b0f15be"],
+Cell[1190, 42, 12206, 292, 95, "Output",ExpressionUUID->"c86c58dd-04e1-4d27-8acb-5e7ca59a5f72"]
+}, Open  ]],
+Cell[13411, 337, 379, 8, 30, "Input",ExpressionUUID->"5f0935a4-0ff4-42bd-811b-c6dc4cb2f64f"],
+Cell[13793, 347, 295, 6, 52, "Input",ExpressionUUID->"707b077c-bf22-4e27-bd3e-c0d9f0ffe132"],
+Cell[14091, 355, 1353, 27, 73, "Input",ExpressionUUID->"6e3c1bee-133c-40d9-bbce-5a5f84708097"],
+Cell[15447, 384, 508, 13, 73, "Input",ExpressionUUID->"e42a9cd8-fc2d-405a-8ef9-9a1a778b6137"],
+Cell[15958, 399, 595, 15, 30, "Input",ExpressionUUID->"f04ec90d-b977-4b66-97f1-c1fcc8e51fca"],
+Cell[CellGroupData[{
+Cell[16578, 418, 691, 17, 52, "Input",ExpressionUUID->"963950ca-5d5f-480a-aa65-3fff8e7856bf"],
+Cell[17272, 437, 708, 11, 34, "Output",ExpressionUUID->"02c86ac2-977b-4028-9ebc-4a29d3bb5239"]
+}, Open  ]],
+Cell[17995, 451, 260, 5, 30, "Input",ExpressionUUID->"a1584f9e-2dad-4bbe-a894-f1192f1da080"],
+Cell[CellGroupData[{
+Cell[18280, 460, 723, 11, 30, "Input",ExpressionUUID->"3bf4f09c-c285-4e11-a186-94d22ac8e340"],
+Cell[19006, 473, 1520, 23, 34, "Output",ExpressionUUID->"b7f38a4b-d045-4bec-9996-9951eabace86"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20563, 501, 344, 8, 30, "Input",ExpressionUUID->"fa9fa95e-ffc8-434e-9e09-903d93919553"],
+Cell[20910, 511, 656, 12, 34, "Output",ExpressionUUID->"bd6a9785-b468-4c55-9cac-ff8248ef82e6"]
+}, Open  ]],
+Cell[21581, 526, 836, 20, 52, "Input",ExpressionUUID->"910e94ab-02cf-463d-b259-4275527b0d3d"],
+Cell[22420, 548, 853, 23, 52, "Input",ExpressionUUID->"b6a447d8-d32b-4d51-98ad-99ca29d7ca7b"],
+Cell[23276, 573, 440, 8, 52, "Input",ExpressionUUID->"e6b19b3b-ebb8-43c7-b4ce-593fb8de7b9d"],
+Cell[CellGroupData[{
+Cell[23741, 585, 907, 24, 30, "Input",ExpressionUUID->"ff44cfa3-4303-48fd-9850-46649b4837d0"],
+Cell[24651, 611, 3868, 106, 55, "Output",ExpressionUUID->"ad7cfc8d-6393-4a39-82c1-a6189336bc83"]
+}, Open  ]],
+Cell[28534, 720, 159, 3, 30, "Input",ExpressionUUID->"7d4eabcd-2146-4fad-8aca-080be16510d0"],
+Cell[CellGroupData[{
+Cell[28718, 727, 1586, 38, 73, "Input",ExpressionUUID->"0181c93e-cd27-488e-b8aa-c6276d6fe8c1"],
+Cell[30307, 767, 476, 12, 32, "Print",ExpressionUUID->"0228ecf7-7afd-4f83-8036-54d318af0c56"]
+}, Open  ]],
+Cell[30798, 782, 597, 14, 30, "Input",ExpressionUUID->"74ff0601-bd7e-450e-84cb-0d5aec0b37be"],
+Cell[CellGroupData[{
+Cell[31420, 800, 959, 21, 30, "Input",ExpressionUUID->"27ed68bf-1f26-4314-a732-955d15aaa00d"],
+Cell[32382, 823, 18107, 443, 95, "Output",ExpressionUUID->"9fb79ff1-07b2-4c13-8207-b90427fd8995"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50526, 1271, 495, 13, 30, "Input",ExpressionUUID->"a4fbd24c-7f18-40b0-8f01-69d2a866d995"],
+Cell[51024, 1286, 35160, 872, 93, "Output",ExpressionUUID->"9fc09558-57ec-4e03-9a98-f089b61c62ef"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
